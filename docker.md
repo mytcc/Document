@@ -1,4 +1,23 @@
-### 1、导入与导出镜像
+### 1、镜像与容器基本操作
+#### 1、镜像
+```Bash
+#删除镜像
+docker rmi allen_mysql:5.7
+#查看所有镜像
+docker images
+```
+
+#### 1、容器
+```Bash
+#删除容器
+docker rm e1a4cb7b4fe3
+#查看正在运行的容器
+docker ps
+#查看所有容器
+docker ps -a
+```
+2.
+### 2、导入与导出镜像
 涉及的命令有export、import、save、load
 #### 1、使用save保存镜像至文件
 ```Bash
@@ -40,18 +59,16 @@ cat nginx-test.tar | docker import - nginx:imp
 1. 若是只想备份images，使用save、load即可
 2. 若是在启动容器后，容器内容有变化，需要备份，则使用export、import
 
-### 2、从指定仓库拉取或推送镜像
+### 3、从指定仓库拉取或推送镜像
 1. 拉取镜像
 ```Bash
 docker pull openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
 ```
-1. 标记镜像
+2. 标记镜像
 ```Bash
 docker tag openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
 ```
-2. 推送镜像
+3. 推送镜像
 ```Bash
 docker push openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
 ```
-
-
