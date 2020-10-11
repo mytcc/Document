@@ -40,4 +40,18 @@ cat nginx-test.tar | docker import - nginx:imp
 1. 若是只想备份images，使用save、load即可
 2. 若是在启动容器后，容器内容有变化，需要备份，则使用export、import
 
+### 2、从指定仓库拉取或推送镜像
+1. 拉取镜像
+```Bash
+docker pull openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
+```
+1. 标记镜像
+```Bash
+docker tag openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
+```
+2. 推送镜像
+```Bash
+docker push openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
+```
+
 
