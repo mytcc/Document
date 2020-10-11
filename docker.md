@@ -4,10 +4,10 @@
 	- [1、镜像](#1镜像)
 	- [2、容器](#2容器)
 - [2、导入与导出镜像](#2导入与导出镜像)
-	- [1、使用save保存镜像至文件](#1使用save保存镜像至文件)
+	- [1、使用 save 保存镜像至文件](#1使用-save-保存镜像至文件)
 	- [2、使用 load 导入镜像文件](#2使用-load-导入镜像文件)
-	- [3、使用export保存镜像至文件](#3使用export保存镜像至文件)
-	- [4、使用import导入镜像文件](#4使用import导入镜像文件)
+	- [3、使用 export 保存镜像至文件](#3使用-export-保存镜像至文件)
+	- [4、使用 import 导入镜像文件](#4使用-import-导入镜像文件)
 	- [5、区别](#5区别)
 	- [6、建议](#6建议)
 - [3、从指定仓库拉取或推送镜像](#3从指定仓库拉取或推送镜像)
@@ -37,20 +37,20 @@ docker ps -a
 
 # 2、导入与导出镜像
 涉及的命令有export、import、save、load
-## 1、使用save保存镜像至文件
+## 1、使用 save 保存镜像至文件
 
->docker save -o nginx.tar nginx:latest 
+>docker save -o nginx.tar nginx:latest
 
 其中-o和>表示输出到文件，nginx.tar为目标文件，nginx:latest是源镜像名（name:tag）  
 ## 2、使用 load 导入镜像文件
 >docker load -i nginx.tar
 
-其中-i和<表示从文件输入。会成功导入镜像及相关元数据，包括tag信息  
-## 3、使用export保存镜像至文件
+其中-i表示从文件输入。会成功导入镜像及相关元数据，包括tag信息  
+## 3、使用 export 保存镜像至文件
 >docker export -o nginx-test.tar nginx-test
 
 其中-o表示输出到文件，nginx-test.tar为目标文件，nginx-test是源容器名（name）
-## 4、使用import导入镜像文件
+## 4、使用 import 导入镜像文件
 >docker import nginx-test.tar nginx:imp
 
 ## 5、区别
@@ -64,14 +64,10 @@ docker ps -a
 
 # 3、从指定仓库拉取或推送镜像
 1. 拉取镜像
-```Bash
-docker pull openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
-```
+>docker pull openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
+
 2. 标记镜像
-```Bash
-docker tag openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
-```
+>docker tag openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
+
 3. 推送镜像
-```Bash
-docker push openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
-```
+>docker push openjdk:8-jre-alpine registry.cn-shanghai.aliyuncs.com/ruoli-microservice/openjdk:8-jre-alpine
