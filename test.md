@@ -1,7 +1,9 @@
 ### 1、导入与导出镜像
 涉及的命令有export、import、save、load
 #### 1、使用save保存镜像至文件
-docker save -o nginx.tar nginx:latest  
+```Bash
+docker save -o nginx.tar nginx:latest
+```
 或者  
 docker save > nginx.tar nginx:latest  
 其中-o和>表示输出到文件，nginx.tar为目标文件，nginx:latest是源镜像名（name:tag）  
@@ -20,7 +22,7 @@ cat nginx-test.tar | docker import - nginx:imp
 #### 5、区别
 1. export命令导出的tar文件略小于save命令导出的
 2. export命令是从容器（container）中导出tar文件，而save命令则是从镜像（images）中导出
-3. 基于第二点，export导出的文件再import回去时，无法保留镜像所有历史（即每一层layer信息，不熟悉的可以去看Dockerfile），不能进行回滚操作；而save是依据镜像来的，所以导入时可以完整保留下每一层layer信息。如下图所示，nginx:latest是save导出load导入的，nginx:imp是export导出import导入的。
+3. 基于第二点，export导出的文件再import回去时，无法保留镜像所有历史（即每一层layer信息，不熟悉的可以去看Dockerfile），不能进行回滚操作；而save是依据镜像来的，所以导入时可以完整保留下每一层layer信息。
 #### 6、建议
 可以依据具体使用场景来选择命令
 1. 若是只想备份images，使用save、load即可
