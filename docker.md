@@ -5,7 +5,7 @@
 	- [2、容器](#2容器)
 - [2、导入与导出镜像](#2导入与导出镜像)
 	- [1、使用save保存镜像至文件](#1使用save保存镜像至文件)
-	- [2、使用load导入镜像文件](#2使用load导入镜像文件)
+	- [2、使用 load 导入镜像文件](#2使用-load-导入镜像文件)
 	- [3、使用export保存镜像至文件](#3使用export保存镜像至文件)
 	- [4、使用import导入镜像文件](#4使用import导入镜像文件)
 	- [5、区别](#5区别)
@@ -15,12 +15,13 @@
 <!-- /TOC -->
 # 1、镜像与容器基本操作
 ## 1、镜像
-```Bash
---删除镜像
+
+>删除镜像  
 docker rmi allen_mysql:5.7
---查看所有镜像
+
+>查看所有镜像  
 docker images
-```
+
 ## 2、容器
 ```Bash
 --删除容器
@@ -41,7 +42,7 @@ docker save -o nginx.tar nginx:latest
 docker save > nginx.tar nginx:latest  
 ```
 其中-o和>表示输出到文件，nginx.tar为目标文件，nginx:latest是源镜像名（name:tag）  
-## 2、使用load导入镜像文件
+## 2、使用 load 导入镜像文件
 ```Bash
 docker load -i nginx.tar
 ```
