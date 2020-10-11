@@ -16,7 +16,6 @@ docker ps
 #查看所有容器
 docker ps -a
 ```
-2.
 ### 2、导入与导出镜像
 涉及的命令有export、import、save、load
 #### 1、使用save保存镜像至文件
