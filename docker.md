@@ -1,7 +1,9 @@
+
+
 ### 1、镜像与容器基本操作
 #### 1、镜像
 ```Bash
-#删除镜像
+--删除镜像
 docker rmi allen_mysql:5.7
 #查看所有镜像
 docker images
@@ -9,11 +11,11 @@ docker images
 
 #### 1、容器
 ```Bash
-#删除容器
+--删除容器
 docker rm e1a4cb7b4fe3
-#查看正在运行的容器
+--查看正在运行的容器
 docker ps
-#查看所有容器
+--查看所有容器
 docker ps -a
 ```
 ### 2、导入与导出镜像
