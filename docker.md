@@ -22,48 +22,37 @@ docker rmi allen_mysql:5.7
 >查看所有镜像  
 docker images
 
+>搜索镜像  
+docker search centos
+
 ## 2、容器
-```Bash
---删除容器
+>删除容器  
 docker rm e1a4cb7b4fe3
---查看正在运行的容器
+
+>查看正在运行的容器  
 docker ps
---查看所有容器
+
+>查看所有容器  
 docker ps -a
-```
+
 # 2、导入与导出镜像
 涉及的命令有export、import、save、load
 ## 1、使用save保存镜像至文件
-```Bash
-docker save -o nginx.tar nginx:latest
-```
-或者  
-```Bash
-docker save > nginx.tar nginx:latest  
-```
+
+>docker save -o nginx.tar nginx:latest 
+
 其中-o和>表示输出到文件，nginx.tar为目标文件，nginx:latest是源镜像名（name:tag）  
 ## 2、使用 load 导入镜像文件
-```Bash
-docker load -i nginx.tar
-```
-或
-```Bash
-docker load < nginx.tar
-```
+>docker load -i nginx.tar
+
 其中-i和<表示从文件输入。会成功导入镜像及相关元数据，包括tag信息  
 ## 3、使用export保存镜像至文件
-```Bash
-docker export -o nginx-test.tar nginx-test
-```
+>docker export -o nginx-test.tar nginx-test
+
 其中-o表示输出到文件，nginx-test.tar为目标文件，nginx-test是源容器名（name）
 ## 4、使用import导入镜像文件
-```
-docker import nginx-test.tar nginx:imp
-```
-或
-```
-cat nginx-test.tar | docker import - nginx:imp
-```
+>docker import nginx-test.tar nginx:imp
+
 ## 5、区别
 1. export命令导出的tar文件略小于save命令导出的
 2. export命令是从容器（container）中导出tar文件，而save命令则是从镜像（images）中导出
