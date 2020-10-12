@@ -79,7 +79,7 @@ systemctl disable firewalld.service
 >usermod -aG docker docker
 
 ## 3、安装
-###1、下载RKE
+### 1、下载RKE
 下载地址为：
 >https://github.com/rancher/rke/releases  
 
