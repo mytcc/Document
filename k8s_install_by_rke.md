@@ -64,16 +64,18 @@ modprobe xt_tcpudp
 ```
 ### 3、修改 sysctl 配置
 >vi /etc/sysctl.conf  
-增加内容    
+
+>增加内容    
  net.bridge.bridge-nf-call-iptables = 1  
-立即生效  
+
+>立即生效  
  sysctl -p
 
 ### 4、关闭防火墙
-```Bash
-systemctl stop firewalld.service
+
+>systemctl stop firewalld.service  
 systemctl disable firewalld.service
-```
+
 ### 5、用户分组
 将docker用户添加到docker分组中
 >usermod -aG docker docker
@@ -84,7 +86,7 @@ systemctl disable firewalld.service
 >https://github.com/rancher/rke/releases  
 
 
->使用 wget 下载
+>使用 wget 下载  
 yum install wget  
 wget https://github.com/rancher/rke/releases/download/v1.1.9/rke_linux-amd64  
 
