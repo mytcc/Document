@@ -1,24 +1,29 @@
-<!-- TOC titleSize:2 tabSpaces:2 depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 skip:0 title:1 charForUnorderedList:* -->
-## Table of Contents
-* [kubernetes安装](#kubernetes)
-  * [1、背景](#1)
-  * [2、环境准备](#2)
-    * [1、禁用 swap](#1-swap)
-    * [2、检查依赖模组](#2)
-    * [3、修改 sysctl 配置](#3-sysctl-)
-    * [4、关闭防火墙](#4)
-    * [5、用户分组](#5)
-  * [3、安装](#3)
-    * [1、下载RKE](#1rke)
-    * [2、准备集群服务器](#2)
-    * [3、编写集群初始化文件](#3)
-<!-- /TOC -->
+<!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
+- [kubernetes安装](#kubernetes安装)
+  - [1、背景](#1背景)
+  - [2、环境准备](#2环境准备)
+    - [1、禁用 swap](#1禁用-swap)
+    - [2、检查依赖模组](#2检查依赖模组)
+    - [3、修改 sysctl 配置](#3修改-sysctl-配置)
+    - [4、关闭防火墙](#4关闭防火墙)
+    - [5、用户分组](#5用户分组)
+  - [3、安装](#3安装)
+    - [1、下载RKE](#1下载rke)
+    - [2、准备集群服务器](#2准备集群服务器)
+    - [3、编写集群初始化文件](#3编写集群初始化文件)
+<!-- TOC END -->
+
+
+
+
+
 # kubernetes安装
 ---
 ## 1、背景
 使用RKE安装kubernetes集群，Rancher Kubernetes Engine，简称 RKE，是一个经过 CNCF 认证的 Kubernetes 安装程序。RKE 支持多种操作系统，包括 MacOS、Linux 和 Windows，可以在裸金属服务器（BMS）和虚拟服务器（Virtualized Server）上运行。
 >RKE官方安装kubernetes文档可参考：
 https://docs.rancher.cn/docs/rke/_index/
+
 ## 2、环境准备
 操作系统：CentOS 7.6 64位  
 安装镜像：CentOS-7.6.1810-x86_64.iso  
@@ -28,6 +33,7 @@ https://docs.rancher.cn/docs/rke/_index/
 需安装docker
 ### 1、禁用 swap
 >swapoff -a
+
 ### 2、检查依赖模组
 ```Bash
 #!/bin/bash
@@ -62,6 +68,7 @@ modprobe xt_tcpudp
  net.bridge.bridge-nf-call-iptables = 1  
 立即生效  
  sysctl -p
+
 ### 4、关闭防火墙
 ```Bash
 systemctl stop firewalld.service
@@ -70,6 +77,7 @@ systemctl disable firewalld.service
 ### 5、用户分组
 将docker用户添加到docker分组中
 >usermod -aG docker docker
+
 ## 3、安装
 ###1、下载RKE
 下载地址为：
@@ -89,4 +97,5 @@ mv rke /usr/sbin/
 192.168.0.102 worker  
 192.168.0.103 worker  
 192.168.0.104 worker
+
 ### 3、编写集群初始化文件
