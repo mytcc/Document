@@ -83,15 +83,17 @@ systemctl disable firewalld.service
 下载地址为：
 >https://github.com/rancher/rke/releases  
 
-```
---使用 wget 下载
+
+>使用 wget 下载
 yum install wget  
 wget https://github.com/rancher/rke/releases/download/v1.1.9/rke_linux-amd64  
---重命名  
+
+>重命名  
 mv rke_linux-amd64 rke
---移动至sbin  
+
+>移动至sbin  
 mv rke /usr/sbin/
-```
+
 ### 2、准备集群服务器
 >192.168.0.101 master  
 192.168.0.102 worker  
