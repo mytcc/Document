@@ -11,6 +11,10 @@ docker images
 >搜索镜像  
 docker search centos
 
+>删除所有的镜像  
+docker rmi $(docker images -q)
+
+
 ## 2、容器
 >删除容器  
 docker rm e1a4cb7b4fe3
@@ -20,6 +24,14 @@ docker ps
 
 >查看所有容器  
 docker ps -a
+
+>停止所有的容器  
+docker stop $(docker ps -aq)
+
+>删除所有的容器  
+docker rm $(docker ps -aq)
+
+
 
 # 2、导入与导出镜像
 涉及的命令有export、import、save、load
