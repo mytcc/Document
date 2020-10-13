@@ -7,10 +7,13 @@
     - [3、修改 sysctl 配置](#3修改-sysctl-配置)
     - [4、关闭防火墙](#4关闭防火墙)
     - [5、用户分组](#5用户分组)
+    - [6、配置SSH 密钥](#6配置ssh-密钥)
   - [3、安装](#3安装)
     - [1、下载RKE](#1下载rke)
     - [2、准备集群服务器](#2准备集群服务器)
     - [3、编写集群初始化文件](#3编写集群初始化文件)
+    - [4、启动](#4启动)
+    - [5、可能遇见的问题](#5可能遇见的问题)
 <!-- TOC END -->
 
 
@@ -80,6 +83,17 @@ systemctl disable firewalld.service
 将docker用户添加到docker分组中
 >usermod -aG docker docker
 
+### 6、配置SSH 密钥
+>ssh-keygen  
+
+连续按三次 enter 即可生成密钥  
+相互复制公钥到其他节点
+>ssh-copy-id -i .ssh/id_rsa.pub docker@192.168.0.101
+
+复制完成即可实现免密登录，测试一下
+>ssh 192.168.0.101
+
+
 ## 3、安装
 ### 1、下载RKE
 下载地址为：
@@ -103,3 +117,31 @@ mv rke /usr/sbin/
 192.168.0.104 worker
 
 ### 3、编写集群初始化文件
+> vi cluster.yml
+
+最小化配置
+```yaml
+nodes:
+  - address: 192.168.0.101
+    user: docker
+    role:
+      - controlplane
+      - etcd
+      - worker
+```
+
+### 4、启动
+>启动集群  
+rke up
+
+>移除集群  
+rke remove
+
+>移动集群默认配置文件至 .kube  
+mv kube_config_cluster.yml .kube/config
+
+### 5、可能遇见的问题
+#### 1、报错1
+>Failed to get job complete status for job rke-network-plugin-deploy-job in namespace kube-system  
+此问题安装 kubectl 即可解决，安装方法可参考
+https://blog.csdn.net/qsz1281509180/article/details/106302494/
