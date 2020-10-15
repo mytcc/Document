@@ -14,6 +14,11 @@ docker search centos
 >删除所有的镜像  
 docker rmi $(docker images -q)
 
+>镜像构建  
+-t 表示新构建镜像的名称和TAG  
+. 表示使用当前目录的Dockerfile构建镜像  
+docker build -t ruolihello:v1.0.0 .
+
 
 ## 2、容器
 >删除容器  
@@ -30,6 +35,11 @@ docker stop $(docker ps -aq)
 
 >删除所有的容器  
 docker rm $(docker ps -aq)
+
+>运行容器  
+-p 映射端口  
+-d 后台运行，返回容器ID  
+docker run -p 8080:8080 -d ruolihello:v1.0.0
 
 
 现在的docker有了专门清理资源(container、image、网络)的命令。   
